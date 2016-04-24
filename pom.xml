@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.soulgalore.web</groupId>
   <artifactId>delay</artifactId>
@@ -8,55 +9,82 @@
   <name>Delay</name>
   
   <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <deploy.target.hostname>localhost</deploy.target.hostname>
+      <deploy.target.management.port>9990</deploy.target.management.port>
+      <deploy.target.management.user>cyotee</deploy.target.management.user>
+      <deploy.target.management.password>Aa!11235813</deploy.target.management.password>
+  </properties>
   
-   <dependencies>
-    <dependency>
-   <groupId>com.github.jsimone</groupId>
-   <artifactId>webapp-runner</artifactId>
-   <version>7.0.30.1</version>
-   <scope>provided</scope>
-  </dependency>
- </dependencies>
+  <dependencies>
+   <dependency>
+    <groupId>com.github.jsimone</groupId>
+    <artifactId>webapp-runner</artifactId>
+    <version>7.0.30.1</version>
+    <!-- <scope>provided</scope> -->
+   </dependency>
+  </dependencies>
 
- <build>
-  <plugins>
-   <plugin>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-     <source>1.7</source>
-     <target>1.7</target>
-    </configuration>
-   </plugin>
-   <plugin>
-    <artifactId>maven-war-plugin</artifactId>
-    <version>2.2</version>
-   </plugin>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-dependency-plugin</artifactId>
-    <version>2.4</version>
-    <executions>
-     <execution>
-      <phase>package</phase>
-      <goals>
-       <goal>copy</goal>
-      </goals>
-      <configuration>
-       <artifactItems>
-        <artifactItem>
-         <groupId>com.github.jsimone</groupId>
-         <artifactId>webapp-runner</artifactId>
-         <version>7.0.30.1</version>
-         <destFileName>webapp-runner.jar</destFileName>
-        </artifactItem>
-       </artifactItems>
-      </configuration>
-     </execution>
-    </executions>
-   </plugin>
-  
-  </plugins>
+  <build>
+   <plugins>
+       <plugin>
+           <groupId>org.jboss.as.plugins</groupId>
+           <artifactId>jboss-as-maven-plugin</artifactId>
+           <version>7.5.Final</version>
+
+           <configuration>
+               <hostname>${deploy.target.hostname}</hostname>
+               <port>${deploy.target.management.port}</port>
+               <name>${deploy.target.management.user}</name>
+               <password>${deploy.target.management.password}</password>
+           </configuration>
+
+           <!--<executions>
+               <execution>
+                   <phase>package</phase>
+                   <goals>
+                       <goal>deploy</goal>
+                   </goals>
+               </execution>
+           </executions>-->
+       </plugin>
+
+    <plugin>
+     <artifactId>maven-compiler-plugin</artifactId>
+     <configuration>
+      <source>1.7</source>
+      <target>1.7</target>
+     </configuration>
+    </plugin>
+
+    <plugin>
+     <artifactId>maven-war-plugin</artifactId>
+     <version>2.2</version>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-dependency-plugin</artifactId>
+     <version>2.4</version>
+     <executions>
+      <execution>
+       <phase>package</phase>
+       <goals>
+        <goal>copy</goal>
+       </goals>
+       <configuration>
+        <artifactItems>
+         <artifactItem>
+          <groupId>com.github.jsimone</groupId>
+          <artifactId>webapp-runner</artifactId>
+          <version>7.0.30.1</version>
+          <destFileName>webapp-runner.jar</destFileName>
+         </artifactItem>
+        </artifactItems>
+       </configuration>
+      </execution>
+     </executions>
+    </plugin>
+   </plugins>
   </build>
 </project>
