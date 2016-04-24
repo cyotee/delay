@@ -12,8 +12,8 @@
    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <deploy.target.hostname>localhost</deploy.target.hostname>
       <deploy.target.management.port>9990</deploy.target.management.port>
-      <deploy.target.management.user>cyotee</deploy.target.management.user>
-      <deploy.target.management.password>Aa!11235813</deploy.target.management.password>
+      <deploy.target.management.user>jenkins</deploy.target.management.user>
+      <deploy.target.management.password>J3nk1n$$</deploy.target.management.password>
   </properties>
   
   <dependencies>
