@@ -35,7 +35,7 @@
            <configuration>
                <!--<hostname>${deploy.target.hostname}</hostname>
                <port>${deploy.target.management.port}</port>-->
-               <name>${deploy.target.management.user}</name>
+               <username>${deploy.target.management.user}</username>
                <password>${deploy.target.management.password}</password>
            </configuration>
 
