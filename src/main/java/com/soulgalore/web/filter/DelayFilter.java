@@ -28,9 +28,16 @@ public class DelayFilter implements Filter {
 		
 		if (delay!=null && !"".equals(delay)) {
 			Integer seconds = Integer.valueOf(delay);
-			
+
 			try {
 				Thread.sleep(seconds*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				Thread.sleep(60*1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
