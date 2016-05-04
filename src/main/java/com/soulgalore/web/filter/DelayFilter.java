@@ -37,7 +37,7 @@ public class DelayFilter implements Filter {
 			}
 		} else {
 			try {
-				Thread.sleep(60*1000);
+				Thread.sleep(0*1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
